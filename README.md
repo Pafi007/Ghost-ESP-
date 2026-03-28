@@ -1,6 +1,6 @@
-# ESP32 PAFI — Multi-Tool v2.0
+# GHOSTESP — Multi-Tool v3.0
 
-BLE Spam + WiFi Attacks + Evil Portal + Web UI — wszystko na ESP32 z OLED 128×64.
+BLE Spam + WiFi Attacks + Evil Portal + Web UI — everything for ESP32 with OLED 128×64.
 
 ---
 
@@ -16,9 +16,7 @@ BLE Spam + WiFi Attacks + Evil Portal + Web UI — wszystko na ESP32 z OLED 128�
 | **BTN DOWN** ▼ | GPIO 33 |
 | **BTN OK** ● | GPIO 25 |
 | **BTN BACK** ◄ | GPIO 26 |
-| **LED** | GPIO 2 (built-in) |
 
-> Przyciski: active LOW → podłącz do GND (wewnętrzny pull-up).
 
 ```
   ESP32-WROOM-32U
