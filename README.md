@@ -5,7 +5,7 @@
 # GHOSTESP — Multi-Tool v3.0
 
 BLE Spam + WiFi Attacks + Evil Portal + Web UI — everything for ESP32 with OLED 128×64.
-
+![Moje zdjęcie](20260326_222341.jpg)
 ---
 
 ## Hardware
