@@ -41,18 +41,18 @@ BLE Spam + WiFi Attacks + Evil Portal + Web UI — everything for ESP32 with OLE
 ```
 ┌────────────────────────┐
 │                        │
-│        ESP32           │
-│         PAFI           │
+│        GHOSTWAVE       │
+│                        │
 │                        │
 │    Multi-Tool v2       │
 │ ██████████████████████ │
 └────────────────────────┘
 ```
 
-### Menu główne (3 kategorie)
+### Main Menu
 ```
 ┌────────────────────────┐
-│      ESP32 PAFI        │
+│        GHOSTWAVE       │
 │────────────────────────│
 │ ┌────────────────────┐ │
 │ │█ WiFi            >█│ │  ◄ zaznaczenie
@@ -66,12 +66,12 @@ BLE Spam + WiFi Attacks + Evil Portal + Web UI — everything for ESP32 with OLE
 └────────────────────────┘
 ```
 
-### Podmenu WiFi
+###  WiFi
 ```
 ┌────────────────────────┐
 │█WiFi                  █│
 │────────────────────────│
-│ █Scan APs           █ │  ◄ zaznaczenie
+│ █Scan APs           █ │  ◄ 
 │   Live Beacon          │
 │   Deauth               │
 │   Evil Portal          │
@@ -79,9 +79,9 @@ BLE Spam + WiFi Attacks + Evil Portal + Web UI — everything for ESP32 with OLE
 │ OK=Go  BACK=Menu       │
 └────────────────────────┘
 ```
-(Scrollowalnych 7 opcji: Scan APs, Live Beacon, Deauth, Evil Portal, Beacon PAFI, Beacon Random, Back)
 
-### Podmenu Bluetooth
+
+### Bluetooth
 ```
 ┌────────────────────────┐
 │█Bluetooth             █│
@@ -94,9 +94,9 @@ BLE Spam + WiFi Attacks + Evil Portal + Web UI — everything for ESP32 with OLE
 │ OK=Go  BACK=Menu       │
 └────────────────────────┘
 ```
-(7 opcji: Spam All/Samsung/Windows/Apple/Android, Stop, Back)
 
-### Podmenu Others
+
+### Others
 ```
 ┌────────────────────────┐
 │█Others                █│
@@ -109,7 +109,7 @@ BLE Spam + WiFi Attacks + Evil Portal + Web UI — everything for ESP32 with OLE
 └────────────────────────┘
 ```
 
-### Skan WiFi
+### WiFi scan
 ```
 ┌────────────────────────┐
 │█Scan: 12 APs         █│
@@ -136,7 +136,7 @@ BLE Spam + WiFi Attacks + Evil Portal + Web UI — everything for ESP32 with OLE
 │ BK=Stop  UP/DN=Scrl    │
 └────────────────────────┘
 ```
-Ciągłe skanowanie promiscuous, 13 kanałów, RSSI na żywo.
+
 
 ### Evil Portal
 ```
@@ -152,22 +152,7 @@ Ciągłe skanowanie promiscuous, 13 kanałów, RSSI na żywo.
 │    BACK = STOP         │
 └────────────────────────┘
 ```
-Tworzy AP "Free_WiFi", wyświetla fake Google login. Przechwycone dane pojawiają się natychmiast na OLED.
 
-### Web UI
-```
-┌────────────────────────┐
-│█Web UI Active         █│
-│────────────────────────│
-│ SSID: ESP32_PAFI       │
-│ IP: 192.168.4.1        │
-│ Clients: 1             │
-│ Mode: IDLE             │
-│────────────────────────│
-│    BACK = STOP         │
-└────────────────────────┘
-```
-Panel zarządzania w przeglądarce: scan WiFi, deauth, BLE spam — dark theme.
 
 ### Atak aktywny
 ```
@@ -183,69 +168,4 @@ Panel zarządzania w przeglądarce: scan WiFi, deauth, BLE spam — dark theme.
 └────────────────────────┘
 ```
 
----
 
-## Nawigacja
-
-| Przycisk | Menu główne | Podmenu | Atak/Ekran |
-|----------|-------------|---------|------------|
-| **UP** ▲ | Przesuń w górę | Przesuń w górę | — |
-| **DOWN** ▼ | Przesuń w dół | Przesuń w dół | — |
-| **OK** ● | Wejdź w kategorię | Uruchom opcję | — |
-| **BACK** ◄ | — | Wróć do menu | Stop/Wróć |
-
----
-
-## Funkcje
-
-### WiFi
-- **Scan APs** — skanowanie aktywne, do 50 sieci, sortowanie RSSI
-- **Live Beacon Scan** — promiscuous mode, 13 kanałów, 150ms dwell, RSSI na żywo
-- **Deauth** — deautentykacja wybranego AP
-- **Evil Portal** — AP "Free_WiFi" + fałszywy Google login + przechwytywanie haseł
-- **Beacon PAFI x25** — 25 fake sieci "GOT HACKED BY PAFI"
-- **Beacon Random** — 25 sieci z losowymi SSID
-
-### Bluetooth (BLE Spam)
-- **Spam All/Samsung/Windows/Apple/Android** — fałszywe parowania BLE
-
-### Others
-- **Web UI** — panel zarządzania na `192.168.4.1` (dark theme)
-
----
-
-## Struktura plików
-
-```
-src/
-├── main.cpp              — setup/loop, input handler (~300 linii)
-├── config.h              — piny, stałe
-├── globals.h             — enumy, struktury, extern
-├── buttons.h             — odczyt przycisków
-├── ble_spam.h            — BLE payloady + spam
-├── wifi_scan.h           — ulepszony scan AP
-├── wifi_attack.h         — deauth, beacon spam
-├── beacon_scan.h         — live beacon scanner
-├── evil_portal.h         — captive portal
-├── evil_portal_html.h    — fake Google login HTML
-├── webui.h               — serwer Web UI
-├── webui_html.h          — panel HTML
-└── ui.h                  — rysowanie menu/ekranów
-```
-
----
-
-## Kompilacja
-
-```bash
-cd esp32_pafi_oled
-pio run                    # kompiluj
-pio run -t upload          # wgraj na ESP32
-pio device monitor -b 115200  # serial monitor
-```
-
-## Flash gotowego .bin
-
-```bash
-esptool.py --chip esp32 --baud 921600 write_flash 0x0 ESP32_PAFI_V2_FULL.bin
-```
